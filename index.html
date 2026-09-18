@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Porup Campsite | Basar, Arunachal Pradesh</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1F3A2E; /* Deep Evergreen */
+            --secondary: #C88446; /* Rustic Warm Copper */
+            --accent: #E3ECCF; 
+            --dark: #121A15;
+            --light: #F4F7F2;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Lora', serif;
+        }
+
+        /* Navigation Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(31, 58, 46, 0.95);
+            color: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo-area .logo {
+            font-family: 'Lora', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--secondary);
+        }
+
+        .logo-area .proprietor-tag {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(18, 26, 21, 0.5), rgba(18, 26, 21, 0.6)), url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .btn {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #b0733a;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #3b4d42;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Activities Section */
+        .activities-section {
+            background-color: var(--white);
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .activity-card {
+            background: var(--light);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid var(--secondary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .activity-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .activity-card p {
+            font-size: 0.95rem;
+            color: #4a5c50;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 240px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Video Section */
+        .video-section {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Booking / Inquiry Section */
+        .booking-section {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .booking-section .section-title {
+            color: var(--white);
+        }
+
+        .booking-form {
+            max-width: 650px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--accent);
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        /* Contact Details Section */
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            background-color: var(--light);
+        }
+
+        .contact-box {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-item a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        .map-box {
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background: #ddd;
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-grid, .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-area">
+            <div class="logo">THE PORUP CAMPSITE</div>
+            <div class="proprietor-tag">Proprietor: Lige Nyodu</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#booking">Book Stay</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to The Porup Campsite</h1>
+        <div class="subtitle">Hosted by Lige Nyodu</div>
+        <p>Immerse yourself in the breathtaking wilderness of Leparada District. Clean air, starry nights, and authentic nature await you.</p>
+        <a href="#booking" class="btn">Book Your Stay</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">Experience True Wilderness</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Discover Basar's Hidden Gem</h3>
+                <p>Located amidst the picturesque landscapes of Arunachal Pradesh, <strong>The Porup Campsite</strong> (founded under the proprietorship of <strong>Lige Nyodu</strong>) is your ideal getaway from the hustle of city life. Enjoy quiet evenings around the campfire, explore pristine trekking paths, and experience unmatched hospitality.</p>
+                <p>Whether you are planning a weekend camping expedition with friends or a tranquil retreat into nature, our grounds provide the ultimate scenic basecamp.</p>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80" alt="Campsite nature view">
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="activities-section">
+        <h2 class="section-title">What We Offer</h2>
+        <div class="activities-grid">
+            <div class="activity-card">
+                <h3>⛺ Tent Camping</h3>
+                <p>Comfortable, secure camping setups right in the heart of nature under the open skies of Basar.</p>
+            </div>
+            <div class="activity-card">
+                <h3>🔥 Campfire Nights</h3>
+                <p>Unwind with warmth, music, and stories around a cozy evening bonfire with fellow travelers.</p>
+            </div>
+            <div class="activity-card">
+                <h3>🌲 Nature Trails</h3>
+                <p>Guided or self-explored trekking pathways offering rich scenic views of Leparada's greenery.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery">
+        <h2 class="section-title">Glimpse of The Porup</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1470246973918-29a93221c455?auto=format&fit=crop&w=600&q=80" alt="Camping tent under stars">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=600&q=80" alt="Warm campfire">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1445308394109-4ec2920981b2?auto=format&fit=crop&w=600&q=80" alt="Forest trail">
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Tour Section -->
+    <section id="video" class="video-section">
+        <h2 class="section-title">Take a Video Tour</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="The Porup Campsite Video Tour" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Booking / Inquiry Form Section -->
+    <section id="booking" class="booking-section">
+        <h2 class="section-title">Request a Reservation</h2>
+        <div class="booking-form">
+            <form action="mailto:info@theporupcampsite.com" method="POST" enctype="text/plain">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="dates">Preferred Dates</label>
+                    <input type="text" id="dates" name="dates" placeholder="e.g., Oct 12 - Oct 14" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Additional Notes / Number of Guests</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us about your group size or special requests..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Submit Booking Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Details & Map Section -->
+    <section id="contact" class="contact-info-grid">
+        <div class="contact-box">
+            <h3 style="font-family: 'Lora', serif; color: var(--primary); font-size: 1.8rem; margin-bottom: 1.5rem;">Get in Touch</h3>
+            <div class="contact-item">
+                <strong>Proprietor</strong>
+                Lige Nyodu
+            </div>
+            <div class="contact-item">
+                <strong>Address</strong>
+                Basar, Leparada District, Arunachal Pradesh
+            </div>
+            <div class="contact-item">
+                <strong>Phone / WhatsApp</strong>
+                <a href="tel:+919077341198">+91 9077341198</a>
+            </div>
+        </div>
+        <div class="map-box">
+            <!-- Embedded Google Map centered on Basar, Arunachal Pradesh -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14050.55!2d94.67!3d27.98!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37417e!2sBasar%2C%20Arunachal%20Pradesh!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 The Porup Campsite, Basar (Proprietor: Lige Nyodu). All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
